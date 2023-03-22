@@ -2,9 +2,6 @@ lockfileVersion: 5.4
 
 importers:
 
-  .:
-    specifiers: {}
-
   apps/back:
     specifiers:
       '@adonisjs/assembler': ^5.9.5
