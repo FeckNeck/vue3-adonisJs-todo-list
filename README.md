@@ -9,7 +9,7 @@ clone this repository
 ```
 git clone https://github.com/FeckNeck/vue3-adonisJs-todo.git
 ```
-start the SGBD docker service
+start the SGBD with docker
 ```
 cd apps/back
 docker compose up
