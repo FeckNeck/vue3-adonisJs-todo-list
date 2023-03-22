@@ -5,7 +5,6 @@ import Hash from "@ioc:Adonis/Core/Hash";
 
 export default class AuthController {
   public async register({ auth, request, response }: HttpContextContract) {
-    console.log("request:", request);
     const payload = await request.validate(CreateUser);
     const user = await User.create(payload);
     auth.login(user);

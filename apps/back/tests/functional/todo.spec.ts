@@ -33,7 +33,6 @@ test.group("Todo", (group) => {
       .put("/todo/update")
       .json({
         id: user.todos[0].id,
-        title: "updated-todo",
         checked: true,
       })
       .loginAs(user);

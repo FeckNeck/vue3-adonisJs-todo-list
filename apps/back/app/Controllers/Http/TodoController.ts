@@ -20,11 +20,9 @@ export default class TodoController {
   }
 
   public async update({ request, response }: HttpContextContract) {
-    const { id, title, checked } = request.all();
+    const { id, ...args } = request.all();
     const todo = await Todo.findOrFail(id);
-    todo.title = title;
-    todo.checked = checked;
-    await todo.save();
+    await todo.merge(args).save();
     return response.ok({ todo: todo });
   }
 

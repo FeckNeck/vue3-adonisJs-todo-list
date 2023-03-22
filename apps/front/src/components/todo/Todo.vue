@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 defineProps<{
   todo: Todo;
-  index: number;
 }>();
 
 const emit = defineEmits(["deleteT", "updateT", "modifyTodo"]);
@@ -9,7 +8,10 @@ const emit = defineEmits(["deleteT", "updateT", "modifyTodo"]);
 
 <template>
   <div class="todo">
-    <button @click="emit('updateT', todo, index)" class="checkbox">
+    <button
+      @click="emit('updateT', { id: todo.id, checked: !todo.checked })"
+      class="checkbox"
+    >
       <svg
         v-show="todo.checked"
         width="13"

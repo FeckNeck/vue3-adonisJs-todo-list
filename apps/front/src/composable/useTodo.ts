@@ -32,9 +32,10 @@ export function useTodo() {
       });
   }
 
-  async function updateTodo(todo: Todo, index: number): Promise<void> {
+  async function updateTodo(todo: Todo): Promise<void> {
     await putTodo(todo)
       .then((data) => {
+        const index = todos.value.findIndex((obj) => obj.id === todo.id);
         todos.value[index] = data;
       })
       .catch((err) => {

@@ -5,7 +5,6 @@ export async function putTodo(todo: Todo): Promise<Todo | any> {
   return await api
     .put("/todo/update", { id, title, checked })
     .then((res) => {
-      console.log("res:", res);
       return res.data.todo;
     })
     .catch((error) => {

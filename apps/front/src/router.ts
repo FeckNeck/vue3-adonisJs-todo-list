@@ -1,6 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
 import { useAuth } from "./composable/useAuth";
-import { useUserStore } from "./store/user";
 
 const { isAuthenticated, check } = useAuth();
 const router = createRouter({
@@ -31,6 +30,7 @@ const router = createRouter({
     },
     {
       path: "/todo",
+      name: "todo",
       meta: { requiresAuth: true },
       component: () => import("./pages/TodoList.vue"),
     },

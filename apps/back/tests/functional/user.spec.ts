@@ -98,7 +98,7 @@ test.group("Users | Register", (group) => {
 
   test("ensure user can register", async ({ client }) => {
     const response = await client.post("/auth/register").json({
-      email: "mathis.dousse@example.com",
+      email: "feckneck@example.com",
       password: "IgnitionImpact",
       password_confirmation: "IgnitionImpact",
     });
@@ -148,9 +148,9 @@ test.group("Users | Register", (group) => {
   test("ensure a user cannot register with an existing email", async ({
     client,
   }) => {
-    await UserFactory.merge({ email: "mathis.dousse@example.com" }).create();
+    await UserFactory.merge({ email: "feckneck@example.com" }).create();
     const response = await client.post("/auth/register").json({
-      email: "mathis.dousse@example.com",
+      email: "feckneck@example.com",
       password: "IgnitionImpact",
       password_confirmation: "IgnitionImpact",
     });
@@ -171,7 +171,7 @@ test.group("Users | Register", (group) => {
     client,
   }) => {
     const response = await client.post("/auth/register").json({
-      email: "mathis.dousse@example.com",
+      email: "feckneck@example.com",
       password_confirmation: "IgnitionImpact",
     });
 
@@ -191,7 +191,7 @@ test.group("Users | Register", (group) => {
     client,
   }) => {
     const response = await client.post("/auth/register").json({
-      email: "mathis.dousse@example.com",
+      email: "feckneck@example.com",
       password: "GS",
       password_confirmation: "GS",
     });
@@ -212,7 +212,7 @@ test.group("Users | Register", (group) => {
     client,
   }) => {
     const response = await client.post("/auth/register").json({
-      email: "mathis.dousse@example.com",
+      email: "feckneck@example.com",
       password: "AntiqueMachinaGS",
       password_confirmation: "IgnitionImpact",
     });

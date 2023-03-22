@@ -5,9 +5,9 @@ import { useAuth } from "../../composable/useAuth";
 import { RegisterForm } from "../../services/auth/postRegister";
 
 const form = reactive<RegisterForm>({
-  email: "mathis.dousse@outlook.fr",
-  password: "secret1234",
-  password_confirmation: "secret1234",
+  email: "",
+  password: "",
+  password_confirmation: "",
 });
 
 const { isAuthenticated, register: postRegister, errors, loading } = useAuth();

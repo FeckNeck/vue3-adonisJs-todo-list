@@ -8,8 +8,8 @@ const { isAuthenticated, login: postLogin, errors, loading } = useAuth();
 const router = useRouter();
 
 const form = reactive<LoginForm>({
-  email: "mathis.dousse@outlook.fr",
-  password: "secret1234",
+  email: "",
+  password: "",
 });
 
 const reEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;

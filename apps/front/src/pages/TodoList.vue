@@ -6,42 +6,40 @@ import { useTodo } from "../composable/useTodo";
 
 const { todos, fetchTodos, createTodo, updateTodo, removeTodo } = useTodo();
 
-const currentTodo = ref<Todo | null>(null);
-const currentIndex = ref(-1);
+const currentTitle = ref("");
+const currentId = ref(0);
 
 onMounted(async () => {
   await fetchTodos();
 });
 
 const createT = async (event: any) => {
-  const newTitle = event.target.value;
-  if (currentIndex.value === -1) {
+  const newTitle: string = event.target.value;
+  if (currentTitle.value === "") {
+    currentTitle.value = newTitle;
     await createTodo(newTitle);
-  } else if (newTitle !== currentTodo.value?.title) {
-    currentTodo.value!.title = newTitle!;
-    updateTodo(currentTodo.value!, currentIndex.value);
+  } else if (currentTitle.value !== newTitle) {
+    await updateT({ id: currentId.value, title: newTitle });
   }
-  currentTodo.value = null;
-  currentIndex.value = -1;
+  currentTitle.value = "";
 };
 
 const deleteT = async (id: number) => {
   await removeTodo(id);
 };
 
-const updateT = async (todo: Todo, index: number) => {
-  todo.checked = !todo.checked;
-  updateTodo(todo, index);
+const updateT = async (todo: Todo) => {
+  await updateTodo(todo);
 };
 
-const modifyTodo = (todo: Todo, index: number) => {
-  currentTodo.value = todo;
-  currentIndex.value = index;
+const modifyTodo = (todo: Todo) => {
+  currentTitle.value = todo.title!;
+  currentId.value = todo.id;
 };
 </script>
 <template>
   <div class="todo-container">
-    <CreateTodo @createT="createT" :title="currentTodo?.title" />
+    <CreateTodo @createT="createT" :title="currentTitle" />
     <TransitionGroup name="list" tag="div" class="todo-list">
       <Todo
         v-if="todos.length > 0"
