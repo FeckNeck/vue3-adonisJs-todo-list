@@ -14,7 +14,7 @@ start the SGBD with docker
 cd apps/back
 docker compose up
 ```
-star the application by running (root folder)
+start the application by running (root folder)
 ```
 pnpm run --parallel dev
 ```
